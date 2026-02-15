@@ -1,15 +1,15 @@
-import { createBrowserRouter } from 'react-router';
-import { Root } from './Root';
-import { Home } from './pages/Home';
-import { Recipes } from './pages/Recipes';
-import { RecipeDetail } from './pages/RecipeDetail';
-import { Gallery } from './pages/Gallery';
-import { Blog } from './pages/Blog';
-import { About } from './pages/About';
+import { createHashRouter } from "react-router-dom";
+import { Root } from "./Root";
+import { Home } from "./pages/Home";
+import { Recipes } from "./pages/Recipes";
+import { RecipeDetail } from "./pages/RecipeDetail";
+import { Gallery } from "./pages/Gallery";
+import { Blog } from "./pages/Blog";
+import { About } from "./pages/About";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
-    path: '/',
+    path: "/",
     element: <Root />,
     children: [
       {
@@ -17,23 +17,23 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'recipes',
+        path: "recipes",
         element: <Recipes />,
       },
       {
-        path: 'recipe/:id',
+        path: "recipe/:id",
         element: <RecipeDetail />,
       },
       {
-        path: 'gallery',
+        path: "gallery",
         element: <Gallery />,
       },
       {
-        path: 'blog',
+        path: "blog",
         element: <Blog />,
       },
       {
-        path: 'about',
+        path: "about",
         element: <About />,
       },
     ],
