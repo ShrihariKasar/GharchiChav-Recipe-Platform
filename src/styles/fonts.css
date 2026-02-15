@@ -1,0 +1,11 @@
+/* Font family declarations only — NO @import */
+
+@layer base {
+  body {
+    font-family: 'Inter', 'Noto Sans Devanagari', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', 'Noto Sans Devanagari', serif;
+  }
+}
