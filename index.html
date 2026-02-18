@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gharchi Chav - घरची चव</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#8B0000">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&amp;family=Nunito:wght@300;400;500;600;700&amp;family=Noto+Sans+Devanagari:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            saffron: {
+              50: '#FFF8F0',
+              100: '#FFEFD9',
+              200: '#FFD9A8',
+              300: '#FFC170',
+              400: '#FFA033',
+              500: '#FF8C00',
+              600: '#E67300',
+              700: '#CC5500',
+              800: '#994000',
+              900: '#662B00'
+            },
+            cream: {
+              50: '#FFFDF9',
+              100: '#FDF8F0',
+              200: '#FAF0E4',
+              300: '#F5E6D3',
+              400: '#EDDCC4'
+            },
+            warmBrown: {
+              50: '#FAF6F3',
+              100: '#F0E8E0',
+              200: '#DCC8B5',
+              300: '#C4A882',
+              400: '#A88555',
+              500: '#8B6914',
+              600: '#6B4F10',
+              700: '#4A370B',
+              800: '#2D2207',
+              900: '#1A1404'
+            },
+            gold: {
+              300: '#FFD700',
+              400: '#DAA520',
+              500: '#B8860B'
+            }
+          },
+          fontFamily: {
+            'display': ['Playfair Display', 'serif'],
+            'body': ['Nunito', 'sans-serif'],
+            'marathi': ['Noto Sans Devanagari', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #FF8C00 #FAF0E4;
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(26, 20, 4, 0.85) 0%, rgba(45, 34, 7, 0.75) 50%, rgba(26, 20, 4, 0.9) 100%);
+    }
+    
+    .saffron-gradient {
+      background: linear-gradient(135deg, #FF8C00 0%, #FFA033 50%, #E67300 100%);
+    }
+    
+    .gold-glow {
+      box-shadow: 0 0 40px rgba(255, 140, 0, 0.3), 0 0 80px rgba(218, 165, 32, 0.2);
+    }
+    
+    .card-shadow {
+      box-shadow: 0 8px 32px rgba(139, 105, 20, 0.15), 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+    
+    .glassmorphism {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .glass-nav {
+      background: rgba(253, 248, 240, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 140, 0, 0.2);
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #FFD700 0%, #FF8C00 50%, #DAA520 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .warm-texture {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    @keyframes glow-pulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes heartFloat {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+      50% { transform: translateY(-15px) scale(1.1); opacity: 1; }
+    }
+    
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-glow { animation: glow-pulse 3s ease-in-out infinite; }
+    .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
+    .animate-slideIn { animation: slideIn 0.6s ease-out forwards; }
+    .animate-heartFloat { animation: heartFloat 3s ease-in-out infinite; }
+    
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    
+    .recipe-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(255, 140, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+    
+    .video-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(255, 140, 0, 0.3);
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #FF8C00, #DAA520);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #FF8C00 0%, #FFA033 50%, #E67300 100%);
+      box-shadow: 0 4px 20px rgba(255, 140, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 140, 0, 0.5);
+    }
+    
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-glass:hover {
+      background: rgba(255, 215, 0, 0.2);
+      border-color: rgba(255, 215, 0, 0.6);
+      transform: translateY(-2px);
+    }
+    
+    .timeline-dot {
+      position: relative;
+    }
+    
+    .timeline-dot::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      width: 2px;
+      height: 60px;
+      background: linear-gradient(to bottom, #FF8C00, transparent);
+      transform: translateX(-50%);
+    }
+    
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.2);
+    }
+    
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.3), transparent);
+    }
+    
+    .page {
+      display: none;
+    }
+    
+    .page.active {
+      display: block;
+    }
+    
+    .breadcrumb-link {
+      color: #FF8C00;
+      text-decoration: none;
+    }
+    
+    .breadcrumb-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body bg-cream-100 text-warmBrown-800 overflow-x-hidden">
+  <div id="app-wrapper" class="h-full overflow-auto">
+   <!-- Navigation -->
+   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex items-center justify-between h-16 lg:h-20">
+      <a href="#" onclick="showPage('home', event)" class="flex items-center gap-2 group">
+       <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full saffron-gradient flex items-center justify-center shadow-lg">
+        <span class="text-white text-lg lg:text-xl">🍛</span>
+       </div>
+       <div class="hidden sm:block">
+        <span id="nav-title" class="font-display font-bold text-lg lg:text-xl text-warmBrown-800">Gharchi Chav</span> <span id="nav-marathi" class="font-marathi text-xs lg:text-sm text-saffron-600 block -mt-1">घरची चव</span>
+       </div></a>
+      <div class="hidden lg:flex items-center gap-8">
+       <a href="#" onclick="showPage('home', event)" class="nav-link font-medium text-warmBrown-700 hover:text-saffron-600 active">Home</a> <a href="#" onclick="showPage('recipes', event)" class="nav-link font-medium text-warmBrown-700 hover:text-saffron-600">Recipes</a> <a href="#" onclick="showPage('gallery', event)" class="nav-link font-medium text-warmBrown-700 hover:text-saffron-600">Gallery</a> <a href="#" onclick="showPage('blog', event)" class="nav-link font-medium text-warmBrown-700 hover:text-saffron-600">Blog</a> <a href="#" onclick="showPage('about', event)" class="nav-link font-medium text-warmBrown-700 hover:text-saffron-600">About</a>
+      </div>
+      <div class="flex items-center gap-3">
+       <a href="https://www.youtube.com/@hinaligaikwad" target="_blank" rel="noopener noreferrer" class="w-9 h-9 lg:w-10 lg:h-10 rounded-full bg-red-600 flex items-center justify-center text-white hover:bg-red-700 transition-all hover:scale-110 shadow-md">
+        <svg class="w-4 h-4 lg:w-5 lg:h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+        </svg></a> <a href="https://www.instagram.com/heenali2025" target="_blank" rel="noopener noreferrer" class="w-9 h-9 lg:w-10 lg:h-10 rounded-full bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 flex items-center justify-center text-white hover:opacity-90 transition-all hover:scale-110 shadow-md">
+        <svg class="w-4 h-4 lg:w-5 lg:h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg></a> <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-xl glassmorphism flex items-center justify-center text-warmBrown-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg></button>
+      </div>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden hidden bg-cream-50 border-t border-saffron-200">
+     <div class="px-4 py-4 space-y-2">
+      <a href="#" onclick="showPage('home', event)" class="block px-4 py-3 rounded-xl font-medium text-warmBrown-700 hover:bg-saffron-100 hover:text-saffron-700 transition-colors">Home</a> <a href="#" onclick="showPage('recipes', event)" class="block px-4 py-3 rounded-xl font-medium text-warmBrown-700 hover:bg-saffron-100 hover:text-saffron-700 transition-colors">Recipes</a> <a href="#" onclick="showPage('gallery', event)" class="block px-4 py-3 rounded-xl font-medium text-warmBrown-700 hover:bg-saffron-100 hover:text-saffron-700 transition-colors">Gallery</a> <a href="#" onclick="showPage('blog', event)" class="block px-4 py-3 rounded-xl font-medium text-warmBrown-700 hover:bg-saffron-100 hover:text-saffron-700 transition-colors">Blog</a> <a href="#" onclick="showPage('about', event)" class="block px-4 py-3 rounded-xl font-medium text-warmBrown-700 hover:bg-saffron-100 hover:text-saffron-700 transition-colors">About</a>
+     </div>
+    </div>
+   </nav><!-- HOME PAGE -->
+   <div id="home-page" class="page active pt-20">
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+     <!-- Background with food imagery -->
+     <div class="absolute inset-0 bg-warmBrown-900">
+      <div class="absolute inset-0 bg-gradient-to-br from-warmBrown-900 via-warmBrown-800 to-saffron-900 opacity-90"></div>
+      <svg class="absolute inset-0 w-full h-full opacity-10" viewbox="0 0 800 600" preserveaspectratio="xMidYMid slice">
+       <defs>
+        <pattern id="food-pattern" x="0" y="0" width="100" height="100" patternunits="userSpaceOnUse">
+         <circle cx="50" cy="50" r="40" fill="none" stroke="#FF8C00" stroke-width="0.5" opacity="0.3" />
+         <circle cx="50" cy="50" r="20" fill="none" stroke="#DAA520" stroke-width="0.3" opacity="0.2" />
+        </pattern>
+       </defs> <rect width="100%" height="100%" fill="url(#food-pattern)" />
+      </svg>
+     </div><!-- Floating Particles -->
+     <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="particle animate-float" style="top: 20%; left: 10%; animation-delay: 0s; width: 6px; height: 6px;"></div>
+      <div class="particle animate-float" style="top: 30%; left: 80%; animation-delay: 1s; width: 8px; height: 8px;"></div>
+      <div class="particle animate-float" style="top: 60%; left: 15%; animation-delay: 2s; width: 5px; height: 5px;"></div>
+      <div class="particle animate-float" style="top: 70%; left: 75%; animation-delay: 0.5s; width: 7px; height: 7px;"></div>
+      <div class="particle animate-float" style="top: 40%; left: 50%; animation-delay: 1.5s; width: 10px; height: 10px;"></div>
+      <div class="particle animate-float" style="top: 80%; left: 30%; animation-delay: 2.5s; width: 6px; height: 6px;"></div>
+      <div class="particle animate-float" style="top: 15%; left: 60%; animation-delay: 3s; width: 8px; height: 8px;"></div>
+     </div><!-- Decorative Food Elements -->
+     <div class="absolute top-1/4 left-8 lg:left-16 opacity-20 animate-float" style="animation-delay: 0.5s;">
+      <div class="w-16 h-16 lg:w-24 lg:h-24 rounded-full bg-gradient-to-br from-saffron-400 to-saffron-600 blur-sm"></div>
+     </div>
+     <div class="absolute bottom-1/4 right-8 lg:right-16 opacity-20 animate-float" style="animation-delay: 1.5s;">
+      <div class="w-20 h-20 lg:w-32 lg:h-32 rounded-full bg-gradient-to-br from-gold-400 to-saffron-500 blur-sm"></div>
+     </div><!-- Hero Content -->
+<div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+
+  <div class="animate-fadeInUp" style="animation-delay: 0.2s;">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glassmorphism text-gold-300 text-sm mb-6">
+      <span class="animate-glow">✨</span>
+      <span>Authentic Maharashtrian Cuisine</span>
+      <span class="animate-glow">✨</span>
+    </div>
+  </div>
+
+  <h1 id="hero-title"
+      class="animate-fadeInUp font-display font-bold text-5xl sm:text-6xl lg:text-8xl text-gradient mb-4 gold-glow"
+      style="animation-delay: 0.4s;">
+    Gharchi Chav
+  </h1>
+
+  <p id="hero-marathi"
+     class="animate-fadeInUp font-marathi text-2xl sm:text-3xl lg:text-4xl text-gold-300 mb-6"
+     style="animation-delay: 0.6s;">
+    घरची चव
+  </p>
+
+  <p id="hero-tagline"
+     class="animate-fadeInUp font-body text-lg sm:text-xl lg:text-2xl text-cream-200 mb-4 font-light"
+     style="animation-delay: 0.8s;">
+    Homemade Taste that Feels Like Home
+  </p>
+
+  <p id="hero-description"
+     class="animate-fadeInUp text-cream-300/80 max-w-2xl mx-auto mb-10 text-base lg:text-lg"
+     style="animation-delay: 1s;">
+    Discover authentic Maharashtrian recipes passed down through generations.
+  </p>
+
+  <!-- BUTTONS -->
+  <div class="animate-fadeInUp flex flex-col items-center gap-6"
+       style="animation-delay: 1.2s;">
+
+    <div class="flex gap-4 flex-wrap justify-center">
+      <a href="#"
+         onclick="showPage('recipes', event)"
+         class="btn-primary px-8 py-4 rounded-2xl text-white font-semibold text-lg flex items-center gap-3 min-w-[200px] justify-center">
+        🍽️ View Recipes
+      </a>
+
+      <a href="https://www.youtube.com/@hinaligaikwad"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn-glass px-8 py-4 rounded-2xl text-gold-300 font-semibold text-lg flex items-center gap-3 min-w-[200px] justify-center">
+        ▶ Watch Videos
+      </a>
+    </div>
+
+    <!-- SCROLL INDICATOR BELOW BUTTONS -->
+    <div class="flex flex-col items-center gap-2 text-cream-300/60">
+      <span class="text-sm tracking-wide">Scroll to explore</span>
+
+      <div class="w-6 h-10 rounded-full border-2 border-cream-300/40 flex justify-center pt-2">
+        <div class="w-1.5 h-3 bg-gold-400 rounded-full animate-bounce"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+    </section><!-- Featured Recipes Carousel -->
+<section id="recipes-home" class="py-20 lg:py-32 bg-cream-50 relative overflow-hidden">
+
+  <div class="absolute inset-0 warm-texture"></div>
+  <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-warmBrown-900/10 to-transparent"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Heading -->
+    <div class="text-center mb-12 lg:mb-16">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-saffron-100 text-saffron-700 text-sm font-medium mb-4">
+        Featured Collection
+      </span>
+
+      <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-warmBrown-800 mb-3">
+        Popular Recipes
+      </h2>
+
+      <p class="font-marathi text-xl text-saffron-600 mb-4">लोकप्रिय पाककृती</p>
+
+      <p class="text-warmBrown-600 max-w-2xl mx-auto">
+        Handpicked favorites from our kitchen to yours. Each recipe carries generations of love and tradition.
+      </p>
+    </div>
+
+    <!-- Carousel -->
+    <div id="recipe-carousel" class="relative">
+
+      <div class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide">
+
+        <!-- Pohe -->
+        <div class="recipe-card flex-shrink-0 w-80 lg:w-96 bg-white rounded-3xl card-shadow overflow-hidden snap-center">
+          <img src="images/IMG-20260214-WA0067.jpg" alt="Pohe" class="h-56 w-full object-cover">
+
+          <div class="p-6">
+            <h3 class="font-display font-bold text-xl text-warmBrown-800 mb-1">Pohe</h3>
+            <p class="font-marathi text-saffron-600 text-sm mb-3">पोहे</p>
+            <p class="text-warmBrown-600 text-sm mb-4">Traditional Maharashtrian breakfast made from flattened rice.</p>
+
+            <a href="https://www.youtube.com/@hinaligaikwad" target="_blank"
+               class="w-full py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold flex justify-center">
+              ▶ Watch Recipe
+            </a>
+          </div>
+        </div>
+
+        <!-- Kothimbir Wadi -->
+        <div class="recipe-card flex-shrink-0 w-80 lg:w-96 bg-white rounded-3xl card-shadow overflow-hidden snap-center">
+          <img src="images/IMG-20260214-WA0066.jpg" alt="Kothimbir Wadi" class="h-56 w-full object-cover">
+
+          <div class="p-6">
+            <h3 class="font-display font-bold text-xl text-warmBrown-800 mb-1">Kothimbir Wadi</h3>
+            <p class="font-marathi text-saffron-600 text-sm mb-3">कोथिंबीर वडी</p>
+            <p class="text-warmBrown-600 text-sm mb-4">Crispy coriander snack loved across Maharashtra.</p>
+
+            <a href="https://www.youtube.com/@hinaligaikwad" target="_blank"
+               class="w-full py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold flex justify-center">
+              ▶ Watch Recipe
+            </a>
+          </div>
+        </div>
+
+        <!-- Veg Pulav -->
+        <div class="recipe-card flex-shrink-0 w-80 lg:w-96 bg-white rounded-3xl card-shadow overflow-hidden snap-center">
+          <img src="images/IMG-20260214-WA0053.jpg" alt="Veg Pulav" class="h-56 w-full object-cover">
+
+          <div class="p-6">
+            <h3 class="font-display font-bold text-xl text-warmBrown-800 mb-1">Veg Pulav</h3>
+            <p class="font-marathi text-saffron-600 text-sm mb-3">व्हेज पुलाव</p>
+            <p class="text-warmBrown-600 text-sm mb-4">Flavorful rice dish cooked with vegetables and spices.</p>
+
+            <a href="https://www.youtube.com/@hinaligaikwad" target="_blank"
+               class="w-full py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold flex justify-center">
+              ▶ Watch Recipe
+            </a>
+          </div>
+        </div>
+
+        <!-- Modak -->
+        <div class="recipe-card flex-shrink-0 w-80 lg:w-96 bg-white rounded-3xl card-shadow overflow-hidden snap-center">
+          <img src="images/IMG-20260214-WA0044.jpg" alt="Modak" class="h-56 w-full object-cover">
+
+          <div class="p-6">
+            <h3 class="font-display font-bold text-xl text-warmBrown-800 mb-1">Modak</h3>
+            <p class="font-marathi text-saffron-600 text-sm mb-3">मोदक</p>
+            <p class="text-warmBrown-600 text-sm mb-4">Traditional sweet dumplings offered to Lord Ganesha.</p>
+
+            <a href="https://www.youtube.com/@hinaligaikwad" target="_blank"
+               class="w-full py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold flex justify-center">
+              ▶ Watch Recipe
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex justify-center gap-4 mt-6">
+        <button id="prev-btn" class="w-12 h-12 rounded-full bg-white card-shadow flex items-center justify-center text-saffron-600">
+          ‹
+        </button>
+
+        <button id="next-btn" class="w-12 h-12 rounded-full bg-white card-shadow flex items-center justify-center text-saffron-600">
+          ›
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- YouTube Showcase Section -->
+<section class="py-20 lg:py-28 relative overflow-hidden">
+
+  <div class="absolute inset-0 bg-gradient-to-br from-saffron-100 via-cream-100 to-orange-50"></div>
+  <div class="absolute top-0 left-0 w-96 h-96 bg-saffron-300/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-orange-300/20 rounded-full blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-red-100 text-red-700 text-sm font-medium mb-4">
+        🎬 YouTube
+      </span>
+
+      <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-warmBrown-800 mb-3">
+        Watch & Learn
+      </h2>
+
+      <p class="font-marathi text-xl text-saffron-600 mb-4">पहा आणि शिका</p>
+
+      <p class="text-warmBrown-600 max-w-2xl mx-auto">
+        Step-by-step video tutorials to master authentic Maharashtrian recipes in your own kitchen.
+      </p>
+    </div>
+
+    <!-- Video Cards -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+
+      <!-- Pohe Video -->
+      <a href="https://www.youtube.com/@hinaligaikwad" target="_blank"
+         class="video-card group bg-white rounded-3xl card-shadow overflow-hidden transition-all duration-500">
+
+        <div class="relative aspect-video overflow-hidden">
+          <img src="images/IMG-20260214-WA0067.jpg" alt="Pohe"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+
+          <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center shadow-lg">
+              ▶
+            </div>
+          </div>
+        </div>
+
+        <div class="p-5">
+          <h3 class="font-display font-bold text-lg text-warmBrown-800 group-hover:text-saffron-600 transition-colors">
+            Authentic Pohe Recipe
+          </h3>
+          <p class="text-warmBrown-500 text-sm mt-1">Traditional Maharashtrian breakfast</p>
+        </div>
+      </a>
+
+      <!-- Kothimbir Wadi Video -->
+      <a href="https://www.youtube.com/@hinaligaikwad" target="_blank"
+         class="video-card group bg-white rounded-3xl card-shadow overflow-hidden transition-all duration-500">
+
+        <div class="relative aspect-video overflow-hidden">
+          <img src="images/IMG-20260214-WA0066.jpg" alt="Kothimbir Wadi"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+
+          <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center shadow-lg">
+              ▶
+            </div>
+          </div>
+        </div>
+
+        <div class="p-5">
+          <h3 class="font-display font-bold text-lg text-warmBrown-800 group-hover:text-saffron-600 transition-colors">
+            Crispy Kothimbir Wadi
+          </h3>
+          <p class="text-warmBrown-500 text-sm mt-1">Classic Maharashtrian snack</p>
+        </div>
+      </a>
+
+      <!-- Modak Video -->
+      <a href="https://www.youtube.com/@hinaligaikwad" target="_blank"
+         class="video-card group bg-white rounded-3xl card-shadow overflow-hidden transition-all duration-500">
+
+        <div class="relative aspect-video overflow-hidden">
+          <img src="images/IMG-20260214-WA0044.jpg" alt="Modak"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+
+          <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center shadow-lg">
+              ▶
+            </div>
+          </div>
+        </div>
+
+        <div class="p-5">
+          <h3 class="font-display font-bold text-lg text-warmBrown-800 group-hover:text-saffron-600 transition-colors">
+            Ukdiche Modak Special
+          </h3>
+          <p class="text-warmBrown-500 text-sm mt-1">Ganesh Chaturthi festival recipe</p>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Subscribe Button -->
+    <div class="text-center">
+      <a href="https://www.youtube.com/@hinaligaikwad" target="_blank"
+         class="inline-flex items-center gap-3 px-10 py-4 rounded-2xl bg-red-600 text-white font-semibold text-lg hover:bg-red-700 transition-all hover:scale-105 shadow-lg shadow-red-600/30">
+        ▶ Subscribe on YouTube
+      </a>
+    </div>
+
+  </div>
+</section>
+   </div>
+<!-- RECIPES PAGE -->
+<div id="recipes-page" class="page pt-32 pb-20">
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Page Header -->
+    <div class="text-center mb-12">
+      <p class="text-warmBrown-600 mb-2">
+        <a href="#" onclick="showPage('home', event)" class="breadcrumb-link">Home</a> /
+        <span class="text-warmBrown-800 font-medium">Recipes</span>
+      </p>
+
+      <h1 class="font-display font-bold text-4xl lg:text-5xl text-warmBrown-800 mb-3">
+        Our Recipes
+      </h1>
+
+      <p class="font-marathi text-xl text-saffron-600 mb-4">आमच्या पाककृती</p>
+
+      <p class="text-warmBrown-600 max-w-2xl mx-auto">
+        Browse our collection of authentic Maharashtrian recipes, from sweets to daily favorites.
+      </p>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12">
+      <button class="recipe-filter px-6 py-3 rounded-full bg-saffron-500 text-white font-medium active" data-category="all">All Recipes</button>
+      <button class="recipe-filter px-6 py-3 rounded-full bg-white text-warmBrown-700 font-medium card-shadow" data-category="sweets">🍬 Sweets</button>
+      <button class="recipe-filter px-6 py-3 rounded-full bg-white text-warmBrown-700 font-medium card-shadow" data-category="snacks">🍿 Snacks</button>
+      <button class="recipe-filter px-6 py-3 rounded-full bg-white text-warmBrown-700 font-medium card-shadow" data-category="daily">🍽️ Daily Food</button>
+      <button class="recipe-filter px-6 py-3 rounded-full bg-white text-warmBrown-700 font-medium card-shadow" data-category="specials">⭐ Specials</button>
+    </div>
+
+    <!-- Recipe Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Pohe -->
+      <div class="recipe-item-card bg-white rounded-3xl card-shadow overflow-hidden" data-category="daily">
+        <img src="images/IMG-20260214-WA0067.jpg" alt="Pohe" class="h-56 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-display font-bold text-xl text-warmBrown-800 mb-1">Pohe</h3>
+          <p class="font-marathi text-saffron-600 text-sm mb-3">पोहे</p>
+          <p class="text-warmBrown-600 text-sm mb-4">Traditional Maharashtrian flattened rice breakfast.</p>
+        </div>
+      </div>
+
+      <!-- Kothimbir Wadi -->
+      <div class="recipe-item-card bg-white rounded-3xl card-shadow overflow-hidden" data-category="snacks">
+        <img src="images/IMG-20260214-WA0066.jpg" alt="Kothimbir Wadi" class="h-56 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-display font-bold text-xl text-warmBrown-800 mb-1">Kothimbir Wadi</h3>
+          <p class="font-marathi text-saffron-600 text-sm mb-3">कोथिंबीर वडी</p>
+          <p class="text-warmBrown-600 text-sm mb-4">Crispy coriander snack loved across Maharashtra.</p>
+        </div>
+      </div>
+
+      <!-- Veg Pulav -->
+      <div class="recipe-item-card bg-white rounded-3xl card-shadow overflow-hidden" data-category="daily">
+        <img src="images/IMG-20260214-WA0053.jpg" alt="Veg Pulav" class="h-56 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-display font-bold text-xl text-warmBrown-800 mb-1">Veg Pulav</h3>
+          <p class="font-marathi text-saffron-600 text-sm mb-3">व्हेज पुलाव</p>
+          <p class="text-warmBrown-600 text-sm mb-4">Flavorful rice cooked with vegetables and spices.</p>
+        </div>
+      </div>
+
+      <!-- Modak -->
+      <div class="recipe-item-card bg-white rounded-3xl card-shadow overflow-hidden" data-category="sweets">
+        <img src="images/IMG-20260214-WA0044.jpg" alt="Modak" class="h-56 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-display font-bold text-xl text-warmBrown-800 mb-1">Modak</h3>
+          <p class="font-marathi text-saffron-600 text-sm mb-3">मोदक</p>
+          <p class="text-warmBrown-600 text-sm mb-4">Sweet dumplings with coconut and jaggery filling.</p>
+        </div>
+      </div>
+
+      <!-- Sabudana Wada -->
+      <div class="recipe-item-card bg-white rounded-3xl card-shadow overflow-hidden" data-category="snacks">
+        <img src="images/IMG-20260214-WA0045.jpg" alt="Sabudana Wada" class="h-56 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-display font-bold text-xl text-warmBrown-800 mb-1">Sabudana Wada</h3>
+          <p class="font-marathi text-saffron-600 text-sm mb-3">साबुदाणा वडा</p>
+          <p class="text-warmBrown-600 text-sm mb-4">Crispy fasting snack made from tapioca pearls.</p>
+        </div>
+      </div>
+
+      <!-- Shev Bhaji -->
+      <div class="recipe-item-card bg-white rounded-3xl card-shadow overflow-hidden" data-category="daily">
+        <img src="images/IMG-20260214-WA0046.jpg" alt="Shev Bhaji" class="h-56 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-display font-bold text-xl text-warmBrown-800 mb-1">Shev Bhaji</h3>
+          <p class="font-marathi text-saffron-600 text-sm mb-3">शेव भाजी</p>
+          <p class="text-warmBrown-600 text-sm mb-4">Spicy curry topped with crunchy shev.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- GALLERY PAGE -->
+<div id="gallery-page" class="page pt-32 pb-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <p class="text-warmBrown-600 mb-2">
+        <a href="#" onclick="showPage('home', event)" class="breadcrumb-link">Home</a> /
+        <span class="text-warmBrown-800 font-medium">Gallery</span>
+      </p>
+
+      <h1 class="font-display font-bold text-4xl lg:text-5xl text-warmBrown-800 mb-3">
+        Food Gallery
+      </h1>
+
+      <p class="font-marathi text-xl text-saffron-600 mb-4">खाद्य गॅलरी</p>
+    </div>
+
+    <!-- Masonry Grid -->
+    <div id="gallery-grid" class="columns-2 sm:columns-3 lg:columns-4 gap-4 space-y-4"></div>
+
+  </div>
+</div>
+<!-- BLOG PAGE -->
+<div id="blog-page" class="page pt-32 pb-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    ...
+  </div>
+</div>
+
+<!-- ABOUT PAGE (INSIDE app-wrapper, NO extra closing div above) -->
+<div id="about-page" class="page">
+  <section class="relative overflow-hidden min-h-screen pt-24">
+
+    <!-- Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-warmBrown-900 via-warmBrown-800 to-saffron-900"></div>
+
+    <!-- Content Wrapper -->
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+
+      <!-- Breadcrumb -->
+      <p class="text-cream-300 mb-8">
+        <a href="#" onclick="showPage('home', event)" class="text-gold-300 hover:text-gold-400">Home</a> /
+        <span class="text-cream-200 font-medium">About</span>
+      </p>
+
+      <!-- Heading -->
+      <div class="text-center mb-16">
+        <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-gradient mb-3">
+          Our Story
+        </h1>
+        <p class="font-marathi text-xl text-gold-300 mb-4">आमची कथा</p>
+      </div>
+
+      <!-- Profile Section -->
+      <div class="lg:flex items-center gap-16 mb-20">
+
+        <div class="lg:w-2/5 mb-10 lg:mb-0">
+          <img src="Profile.jpeg" alt="Heena"
+               class="w-full aspect-[4/5] rounded-3xl object-cover card-shadow">
+        </div>
+
+        <div class="lg:w-3/5">
+          <h3 class="font-display font-bold text-2xl lg:text-3xl text-cream-100 mb-6">
+            Preserving Tradition, One Recipe at a Time
+          </h3>
+
+          <p class="text-cream-200/80 text-lg leading-relaxed mb-6">
+            Growing up in a traditional Maharashtrian household, cooking was never just
+            about food — it was love, culture, and memories served on a plate.
+          </p>
+
+          <p class="text-cream-200/80 text-lg leading-relaxed mb-8">
+            Through <strong>Gharchi Chav</strong>, we share authentic recipes passed down
+            through generations, preserving the warmth of homemade Maharashtrian cuisine
+            for families everywhere.
+          </p>
+
+          <div class="flex items-center gap-4">
+            <a href="https://www.youtube.com/@hinaligaikwad" target="_blank"
+               class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white hover:bg-red-700 transition">▶</a>
+
+            <a href="https://www.instagram.com/heenali2025" target="_blank"
+               class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 flex items-center justify-center text-white hover:opacity-90 transition">⧉</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="mb-20">
+        <h3 class="font-display font-bold text-2xl text-center text-cream-100 mb-12">
+          Our Journey
+        </h3>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          <div>
+            <div class="w-20 h-20 rounded-full saffron-gradient mx-auto mb-4 flex items-center justify-center">🌱</div>
+            <h4 class="text-gold-300 font-bold">2018</h4>
+            <p class="text-cream-200/80 text-sm">Recipe documentation started</p>
+          </div>
+
+          <div>
+            <div class="w-20 h-20 rounded-full saffron-gradient mx-auto mb-4 flex items-center justify-center">🎬</div>
+            <h4 class="text-gold-300 font-bold">2020</h4>
+            <p class="text-cream-200/80 text-sm">YouTube journey began</p>
+          </div>
+
+          <div>
+            <div class="w-20 h-20 rounded-full saffron-gradient mx-auto mb-4 flex items-center justify-center">👥</div>
+            <h4 class="text-gold-300 font-bold">2023</h4>
+            <p class="text-cream-200/80 text-sm">Growing food community</p>
+          </div>
+
+          <div>
+            <div class="w-20 h-20 rounded-full saffron-gradient mx-auto mb-4 flex items-center justify-center">✨</div>
+            <h4 class="text-gold-300 font-bold">2026</h4>
+            <p class="text-cream-200/80 text-sm">Gharchi Chav website launched</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="max-w-2xl mx-auto">
+        <form class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 space-y-5">
+          <h3 class="text-cream-100 text-2xl font-bold text-center mb-4">Get in Touch</h3>
+
+          <input type="text" placeholder="Your Name"
+                 class="w-full px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-cream-100">
+
+          <input type="email" placeholder="Your Email"
+                 class="w-full px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-cream-100">
+
+          <textarea rows="4" placeholder="Message"
+                    class="w-full px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-cream-100"></textarea>
+
+          <button class="w-full py-3 rounded-xl btn-primary text-white font-semibold">
+            Send Message
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+</div>
+<!-- FOOTER -->
+<footer class="bg-warmBrown-900 py-12">
+
+  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
+
+    <!-- Brand -->
+    <div>
+      <h3 class="text-cream-100 font-bold text-xl mb-2">Gharchi Chav</h3>
+      <p class="text-cream-300/70 text-sm">
+        Authentic Maharashtrian homemade recipes shared with love.
+      </p>
+    </div>
+
+    <!-- Links -->
+    <div>
+      <h4 class="text-cream-100 font-semibold mb-3">Quick Links</h4>
+      <ul class="space-y-2 text-cream-300/70 text-sm">
+        <li><a href="#" onclick="showPage('home', event)">Home</a></li>
+        <li><a href="#" onclick="showPage('recipes', event)">Recipes</a></li>
+        <li><a href="#" onclick="showPage('gallery', event)">Gallery</a></li>
+        <li><a href="#" onclick="showPage('blog', event)">Blog</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div>
+      <h4 class="text-cream-100 font-semibold mb-3">Follow</h4>
+      <div class="flex gap-3">
+        <a href="https://www.youtube.com/@hinaligaikwad" class="text-white">YouTube</a>
+        <a href="https://www.instagram.com/heenali2025" class="text-white">Instagram</a>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-cream-400/60 text-sm">
+      © 2026 Gharchi Chav
+    </div>
+
+  </div>
+</footer>
+  </div>
+  <script>
+const foods = [
+  {img:"IMG-20260214-WA0067.jpg", name:"Pohe", category:"meals"},
+  {img:"IMG-20260214-WA0065.jpg", name:"Methi Bhaji", category:"meals"},
+  {img:"IMG-20260214-WA0068.jpg", name:"Lasuni Methi", category:"meals"},
+  {img:"IMG-20260214-WA0066.jpg", name:"Kothimbir Wadi", category:"snacks"},
+  {img:"IMG-20260214-WA0069.jpg", name:"Masala Wang", category:"meals"},
+  {img:"IMG-20260214-WA0064.jpg", name:"Tomato Chutney", category:"meals"},
+  {img:"IMG-20260214-WA0063.jpg", name:"Shepu Palak Chuka", category:"meals"},
+  {img:"IMG-20260214-WA0070.jpg", name:"ABC Juice", category:"meals"},
+
+  {img:"IMG-20260214-WA0062.jpg", name:"Wang Batata", category:"meals"},
+  {img:"IMG-20260214-WA0061.jpg", name:"Kharik Khobare Ladu", category:"sweets"},
+  {img:"IMG-20260214-WA0059.jpg", name:"Cauliflower Bhaji", category:"meals"},
+  {img:"IMG-20260214-WA0058.jpg", name:"Paneer Masala", category:"meals"},
+  {img:"IMG-20260214-WA0060.jpg", name:"Shepu Bhaji", category:"meals"},
+  {img:"IMG-20260214-WA0057.jpg", name:"Gajar Halwa", category:"sweets"},
+  {img:"IMG-20260214-WA0056.jpg", name:"Vatana Bhaji", category:"meals"},
+  {img:"IMG-20260214-WA0053.jpg", name:"Veg Pulav", category:"meals"},
+
+  {img:"IMG-20260214-WA0052.jpg", name:"Chicken Soup", category:"meals"},
+  {img:"IMG-20260214-WA0054.jpg", name:"Chicken Masala", category:"meals"},
+  {img:"IMG-20260214-WA0055.jpg", name:"Bhindi Kids", category:"meals"},
+  {img:"IMG-20260214-WA0051.jpg", name:"Kadhi", category:"meals"},
+  {img:"IMG-20260214-WA0049.jpg", name:"Mirchi Pakoda", category:"snacks"},
+  {img:"IMG-20260214-WA0048.jpg", name:"Palak Puri", category:"snacks"},
+  {img:"IMG-20260214-WA0050.jpg", name:"Kothimbir Thalipeeth", category:"snacks"},
+
+  {img:"IMG-20260214-WA0046.jpg", name:"Shev Bhaji", category:"meals"},
+  {img:"IMG-20260214-WA0047.jpg", name:"Aloo Sabji", category:"meals"},
+  {img:"IMG-20260214-WA0045.jpg", name:"Sabudana Wada", category:"snacks"},
+  {img:"IMG-20260214-WA0044.jpg", name:"Shevaya Kheer", category:"sweets"},
+  {img:"IMG-20260214-WA0041.jpg", name:"Strawberry Milkshake", category:"sweets"},
+  {img:"IMG-20260214-WA0040.jpg", name:"Maggi", category:"meals"},
+  {img:"IMG-20260214-WA0039.jpg", name:"Sandwich", category:"snacks"},
+  {img:"IMG-20260214-WA0043.jpg", name:"Onion Chutney", category:"meals"},
+  {img:"IMG-20260214-WA0042.jpg", name:"Appe", category:"snacks"},
+
+  {img:"IMG-20260214-WA0038.jpg", name:"Dodkyachi Bhaji", category:"meals"},
+  {img:"IMG-20260214-WA0035.jpg", name:"Dal Palak", category:"meals"},
+  {img:"IMG-20260214-WA0037.jpg", name:"Kaut Chutney", category:"meals"},
+  {img:"IMG-20260214-WA0036.jpg", name:"Matki Bhaji", category:"meals"},
+  {img:"IMG-20260214-WA0034.jpg", name:"Bhogi Bhaji", category:"meals"},
+  {img:"IMG-20260214-WA0033.jpg", name:"Bharit", category:"meals"},
+  {img:"IMG-20260214-WA0032.jpg", name:"Moog Bhaji", category:"meals"},
+  {img:"IMG-20260214-WA0031.jpg", name:"Moog Dosa", category:"meals"},
+  {img:"IMG-20260214-WA0030.jpg", name:"Dosa Chutney", category:"meals"},
+  {img:"IMG-20260214-WA0029.jpg", name:"Kandyachi Path", category:"meals"},
+  {img:"IMG-20260214-WA0028.jpg", name:"Bharli Wangi", category:"meals"},
+];
+
+const grid = document.getElementById("gallery-grid");
+
+function renderGallery(filter="all"){
+  grid.innerHTML = "";
+
+  foods
+    .filter(f => filter==="all" || f.category===filter)
+    .forEach(f => {
+      const item = `
+        <div class="masonry-item">
+          <div class="gallery-item rounded-2xl overflow-hidden card-shadow group cursor-pointer">
+            <img src="images/${f.img}" alt="${f.name}"
+                 class="w-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="p-3 bg-white text-sm font-medium text-warmBrown-700">${f.name}</div>
+          </div>
+        </div>`;
+      grid.insertAdjacentHTML("beforeend", item);
+    });
+}
+
+renderGallery();
+
+document.querySelectorAll(".gallery-filter").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".gallery-filter").forEach(b=>b.classList.remove("active","bg-saffron-500","text-white"));
+    btn.classList.add("active","bg-saffron-500","text-white");
+    renderGallery(btn.dataset.filter);
+  });
+});
+</script>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      site_title: 'Gharchi Chav',
+      marathi_subtitle: 'घरची चव',
+      tagline: 'Homemade Taste that Feels Like Home',
+      hero_description: 'Discover authentic Maharashtrian recipes passed down through generations. From traditional sweets to everyday meals, experience the warmth of Indian home cooking.',
+      about_title: 'Our Story',
+      instagram_handle: '@heenali2025',
+      primary_color: '#FF8C00',
+      secondary_color: '#FDF8F0',
+      text_color: '#2D2207',
+      accent_color: '#DAA520',
+      button_color: '#DC2626'
+    };
+
+    // Page navigation function
+    function showPage(pageName, event) {
+      if (event) event.preventDefault();
+      
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      
+      // Show selected page
+      const pageId = pageName + '-page';
+      const page = document.getElementById(pageId);
+      if (page) {
+        page.classList.add('active');
+      }
+      
+      // Update active nav links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      event?.target?.classList.add('active');
+      
+      // Close mobile menu
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu) mobileMenu.classList.add('hidden');
+      
+      // Scroll to top
+      document.getElementById('app-wrapper').scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          // Update hero section
+          const heroTitle = document.getElementById('hero-title');
+          if (heroTitle) heroTitle.textContent = config.site_title || defaultConfig.site_title;
+          
+          const heroMarathi = document.getElementById('hero-marathi');
+          if (heroMarathi) heroMarathi.textContent = config.marathi_subtitle || defaultConfig.marathi_subtitle;
+          
+          const heroTagline = document.getElementById('hero-tagline');
+          if (heroTagline) heroTagline.textContent = config.tagline || defaultConfig.tagline;
+          
+          const heroDescription = document.getElementById('hero-description');
+          if (heroDescription) heroDescription.textContent = config.hero_description || defaultConfig.hero_description;
+          
+          // Update navigation
+          const navTitle = document.getElementById('nav-title');
+          if (navTitle) navTitle.textContent = config.site_title || defaultConfig.site_title;
+          
+          const navMarathi = document.getElementById('nav-marathi');
+          if (navMarathi) navMarathi.textContent = config.marathi_subtitle || defaultConfig.marathi_subtitle;
+          
+          // Update about section
+          const aboutTitle = document.getElementById('about-title');
+          if (aboutTitle) aboutTitle.textContent = config.about_title || defaultConfig.about_title;
+          
+          // Update Instagram handle
+          const instagramHandle = document.getElementById('instagram-handle');
+          if (instagramHandle) instagramHandle.textContent = config.instagram_handle || defaultConfig.instagram_handle;
+          
+          // Update footer
+          const footerTitle = document.getElementById('footer-title');
+          if (footerTitle) footerTitle.textContent = config.site_title || defaultConfig.site_title;
+          
+          const footerMarathi = document.getElementById('footer-marathi');
+          if (footerMarathi) footerMarathi.textContent = config.marathi_subtitle || defaultConfig.marathi_subtitle;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                config.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => {
+                config.secondary_color = value;
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            },
+            {
+              get: () => config.button_color || defaultConfig.button_color,
+              set: (value) => {
+                config.button_color = value;
+                window.elementSdk.setConfig({ button_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['site_title', config.site_title || defaultConfig.site_title],
+          ['marathi_subtitle', config.marathi_subtitle || defaultConfig.marathi_subtitle],
+          ['tagline', config.tagline || defaultConfig.tagline],
+          ['hero_description', config.hero_description || defaultConfig.hero_description],
+          ['about_title', config.about_title || defaultConfig.about_title],
+          ['instagram_handle', config.instagram_handle || defaultConfig.instagram_handle]
+        ])
+      });
+    }
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Recipe carousel navigation
+    const recipeCarousel = document.querySelector('#recipe-carousel > div');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    
+    if (recipeCarousel && prevBtn && nextBtn) {
+      const cardWidth = 384 + 24;
+      
+      prevBtn.addEventListener('click', () => {
+        recipeCarousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        recipeCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      });
+    }
+
+    // Recipe filter
+    document.querySelectorAll('.recipe-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.recipe-filter').forEach(b => {
+          b.classList.remove('bg-saffron-500', 'text-white', 'active');
+          b.classList.add('bg-white', 'text-warmBrown-700');
+        });
+        btn.classList.add('bg-saffron-500', 'text-white', 'active');
+        btn.classList.remove('bg-white', 'text-warmBrown-700');
+      });
+    });
+
+    // Gallery filter
+    document.querySelectorAll('.gallery-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.gallery-filter').forEach(b => {
+          b.classList.remove('bg-saffron-500', 'text-white', 'active');
+          b.classList.add('bg-white', 'text-warmBrown-700');
+        });
+        btn.classList.add('bg-saffron-500', 'text-white', 'active');
+        btn.classList.remove('bg-white', 'text-warmBrown-700');
+      });
+    });
+
+    // Contact form handling
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+    
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        if (name && email && message) {
+          formMessage.textContent = 'Thank you for your message! We\'ll get back to you soon. 🙏';
+          formMessage.className = 'text-center mt-4 text-sm text-green-400';
+          formMessage.classList.remove('hidden');
+          contactForm.reset();
+          
+          setTimeout(() => {
+            formMessage.classList.add('hidden');
+          }, 5000);
+        } else {
+          formMessage.textContent = 'Please fill in all fields.';
+          formMessage.className = 'text-center mt-4 text-sm text-red-400';
+          formMessage.classList.remove('hidden');
+        }
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ce9aad620db445b',t:'MTc3MTIwOTQ5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(() => console.log("PWA Ready"));
+}
+</script>
+ </html>
